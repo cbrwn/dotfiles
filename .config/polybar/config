@@ -1,0 +1,366 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;==========================================================
+
+[color]
+background = #262626
+foreground = #A69585
+foreground-light = #BBA590
+red = #FF5050
+green = #43B581
+blue = #3A71C1
+cyan = #00bcd4
+white = #FFFFFF
+black = #000000
+trans = #00000000
+
+;==========================================================
+;
+;        BAR "main" START
+;
+;==========================================================
+
+[bar/main]
+monitor = ${env:MONITOR:}
+width = 100%
+height = 42
+;offset-x = 1%
+;offset-y = 1%
+;radius = 4.0
+bottom = true
+fixed-center = false
+line-size = 2
+
+background = ${color.background}
+foreground = ${color.foreground}
+
+;border-size = 2
+;border-color = ${color.adapta}
+
+padding-left = 2
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 1
+
+;==========================================================
+
+font-0 = "Roboto:pixelsize=12;2"
+font-1 = "IcoMoon\-Free:pixelsize=14;4"
+font-2 = "Material Icons:size=14;4"
+font-3 = "Font Awesome 5 Brands:pixelsize=14;1"
+font-4 = "Ubuntu Nerd Font:size=14;4"
+
+;==========================================================
+
+;override-redirect = true
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+tray-position = right
+tray-padding = 0
+tray-maxsize = 16
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+;== Module Location ========================================================
+
+modules-left = arch i3
+modules-center = 
+modules-right = volume network date 
+
+;//////////////////////////////////////////////////////////
+;
+;        BAR "main" END 
+;
+;//////////////////////////////////////////////////////////
+
+;==========================================================
+;
+;        BAR "right" START
+;
+;==========================================================
+
+[bar/right]
+monitor = ${env:MONITOR:}
+width = 100%
+height = 70
+;offset-x = 1%
+;offset-y = 1%
+;radius = 4.0
+bottom = true
+fixed-center = false
+line-size = 2
+
+background = ${color.background}
+foreground = ${color.foreground}
+
+;border-size = 2
+;border-color = ${color.adapta}
+
+padding-left = 2
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 1
+
+;==========================================================
+
+font-0 = "Roboto:pixelsize=20;4"
+font-1 = "IcoMoon\-Free:pixelsize=24;5"
+font-2 = "Material Icons:size=24;4"
+font-3 = "Font Awesome 5 Brands:pixelsize=24;4"
+font-4 = "Ubuntu Nerd Font:size=24;4"
+
+;==========================================================
+
+;override-redirect = true
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+;tray-position = right
+tray-padding = 0
+tray-maxsize = 16
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+;== Module Location ========================================================
+
+modules-left = arch i3
+modules-center = 
+modules-right = volume network date 
+
+;//////////////////////////////////////////////////////////
+;
+;        BAR "main" END 
+;
+;//////////////////////////////////////////////////////////
+ 
+;== Modules ========================================================
+
+[module/arch]
+type = custom/text
+content = 
+;Icons =         
+content-padding = 4
+content-foreground = ${color.red}
+click-left = alacritty
+click-middle = rofi -show run -theme dark
+click-right = rofi -show window -theme dark
+
+[module/workspaces]
+type = internal/xworkspaces
+pin-workspaces = true
+enable-click = true
+enable-scroll = true
+format-padding = 0
+;icon-0 = TTY;
+;icon-1 = WEB;
+;icon-2 = LAB;
+;icon-3 = MED;
+;icon-4 = SYS;
+icon-default = 
+format = <label-state>
+label-active = %icon% %name%
+label-occupied = %icon% %name%
+label-urgent = %icon% %name%
+label-empty = %icon%
+label-occupied-padding = 2
+label-empty-padding = 2
+label-urgent-padding = 2
+label-active-padding = 2
+label-active-foreground = ${color.green}
+label-active-underline = ${color.green}
+label-occupied-underline = ${color.blue}
+label-urgent-foreground = ${color.red}
+label-urgent-underline = ${color.red}
+
+[module/i3]
+;{{{
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+ws-icon-0       = 1;  1
+ws-icon-1       = 2;  2 
+ws-icon-2       = 3;  3
+ws-icon-3       = 4;  4
+ws-icon-4       = 5;  5
+ws-icon-5       = 6;  6
+ws-icon-6       = 7;  7
+ws-icon-7       = 8;  8
+ws-icon-8       = 9;  9
+ws-icon-9       = 10;  0
+ws-icon-default = 
+
+label-mode-padding = 4
+label-mode-foreground = ${color.foreground}
+label-mode-background = ${color.background}
+
+; focused = Active workspace on focused monitor
+label-focused = %icon%
+label-focused-background = ${color.foreground}
+label-focused-foreground = ${color.background}
+label-focused-padding = 6
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %icon%
+label-unfocused-padding = 4
+label-unfocused-background = ${color.background}
+label-unfocused-foreground = ${color.foreground}
+
+; visible = Active workspace on unfocused monitor
+label-visible = %icon%
+label-visible-background = #333333
+label-visible-padding = 4
+
+; urgent = Workspace with urgency hint set
+label-urgent = %index% %icon%
+label-urgent-padding = 4
+label-urgent-background = ${color.red}
+label-urgent-foreground = ${color.background}
+
+; Separator in between workspaces
+;label-separator = |
+; }}}foreground}
+
+[module/mpd]
+type = internal/mpd
+;format-online =  <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+format-online = <icon-prev>     <label-song>     <icon-next>
+
+icon-next = 
+icon-prev = 
+;icon-play = 
+;icon-pause = 
+;icon-stop = 
+
+label-song-maxlen = 25
+label-song-ellipsis = true
+
+;==========================================================
+
+[module/pkg]
+type = custom/script
+exec = updates.sh
+exec-if = "ping -q -w 2 -c 1 176.34.135.167 > /dev/null"
+label = %{A1:termite -e "aurman -Syyu" & disown:} %{A3:termite -e "aurman -Syyu" & disown:}%output%%{A} %{A}
+tail = true
+
+[module/battery]
+type = internal/battery
+full-at = 98
+time-format = %H:%M
+battery = BAT1
+adapter = AC
+format-charging = <animation-charging> <label-charging>
+;label-charging = %percentage%% (%time%)
+label-charging = %percentage%%
+format-discharging = <ramp-capacity> <label-discharging>
+;label-discharging = %percentage%% (%time%)
+label-discharging = %percentage%%
+format-full = <label-full>
+format-full-prefix = " "
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-0-foreground = ${color.red}
+ramp-capacity-1-foreground = ${color.red}
+ramp-capacity-foreground   = ${color.foreground}
+bar-capacity-width = 10
+animation-charging-0 = " "
+animation-charging-1 = " "
+animation-charging-2 = " "
+animation-charging-3 = " "
+animation-charging-4 = " "
+animation-charging-framerate = 750
+
+[module/volume]
+type = internal/alsa
+;speaker-mixer = Speaker
+;headphone-mixer = Headphone
+;headphone-id = 16
+;mapped = true
+format-volume = <ramp-volume> <label-volume>
+label-volume = %percentage%%
+format-muted-prefix = " "
+label-muted = MUTE
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
+ramp-volume-4 = 
+ramp-volume-5 = 
+ramp-volume-6 = 
+ramp-volume-7 = 
+ramp-volume-8 = 
+ramp-volume-9 = 
+ramp-headphones-0 = 
+ramp-headphones-1 = 
+
+[module/network]
+type = custom/script
+exec = check-network
+click-left = networkmanager_dmenu &
+click-right = networkmanager_dmenu &
+label-padding = 1
+tail = true
+
+[module/date]
+type = internal/date
+interval = 30
+label =  %time%
+time =   %I:%M %p
+time-alt =   %A %B %d / %Y-%m-%d
+
+[module/sysmenu]
+type = custom/text
+content = 
+content-foreground = ${color.foreground}
+click-left = pmenu
+click-right = pmenu
+
+[module/powermenu]
+type = custom/menu
+expand-right = true
+format-spacing = 1
+label-open = 
+label-open-foreground = ${color.foreground}
+label-close =  cancel
+label-close-foreground = ${color.red}
+label-separator = |
+label-separator-foreground = ${color.foreground}
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = shutdown
+menu-0-1-exec = menu-open-2
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = systemctl reboot
+menu-2-0 = shutdown
+menu-2-0-exec = systemctl poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+; Separator in between workspaces
+; label-separator = |
+; }}}
+
+;== EOF ========================================================
