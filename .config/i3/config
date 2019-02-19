@@ -15,6 +15,8 @@ exec --no-startup-id bash /home/cam/.config/setbackground
 exec --no-startup-id bash /home/cam/.config/polybar/launch.sh
 # compton
 exec --no-startup-id compton -b
+# redshift (f.lux-like)
+exec --no-startup-id redshift -l geoclue2
 
 set $mod Mod4
 
@@ -193,3 +195,4 @@ smart_borders on
 for_window [class="^aie"] floating enable
 for_window [class="^[Ll]ua"] floating enable
 for_window [class="^[Tt]hunar"] floating enable
+for_window [class="^[Vv]irtualbox"] floating enable
